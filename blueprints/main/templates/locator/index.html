@@ -3,22 +3,29 @@
         <title>Route time</title>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map.css') }}">
-        <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+        <script ></script>
     </head>
     <body>
-    <form method="post" action="{{ url_for('locator.result') }}">
-        
+    <form method="post">
+
         <div id="fields">
             Lat Origin:<input type="number" name="lat_orig" value="55.756272" readonly>
             Lon Origin:<input type="number" name="lon_orig" value="37.618746" readonly>
 
-            Lat Dest:<input type="number" name="lat_dest" id="lat_dest" readonly>
-            Lon Dest:<input type="number" name="lon_dest" id="lon_dest" readonly>
+            Lat Dest:<input type="number" name="lat_dest" id="lat_dest" value="{{ destination_latitude }}" readonly>
+            Lon Dest:<input type="number" name="lon_dest" id="lon_dest" value="{{ destination_longitude }}" readonly>
             <input type="submit">
+            {% if distance %}
+            Result: {{ distance }} Km
+            {% endif %}
         </div>
-        <div id="map"></div>        
+        <div id="map"></div>
     </form>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1QXXqPY-XUsml1llLZXwn7i_FRlEgMBo&callback=initMap&libraries=&v=weekly" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgkgurLfDaHnRcCNcLbyxZ26EZ56__xGI&callback=initMap&libraries=&v=weekly" async></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}">
+        console.log("munhenho");
+         placeMarker();
+    </script>
     </body>
 </html>

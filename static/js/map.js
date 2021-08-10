@@ -16,10 +16,12 @@ function initMap() {
         infoWindow.close();
         document.getElementById("lat_dest").value = mapsMouseEvent.latLng.lat();
         document.getElementById("lon_dest").value = mapsMouseEvent.latLng.lat();
-        placeMarker(mapsMouseEvent.latLng);
+        placeMarker();
      });
+  }
+  function placeMarker() {
+        lat = document.getElementById("lat_dest").value
+        lon = document.getElementById("lon_dest").value
 
-    function placeMarker(location) {
-        marker.setPosition(location);       
-    }    
-  }              
+        marker.setPosition(lat, lon);
+    }

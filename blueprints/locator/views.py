@@ -1,25 +1,29 @@
+import flask
 from flask import Blueprint, render_template, request
-from geopy.distance import geodesic 
+from geopy.distance import geodesic
 
-locator = Blueprint('locator', __name__,)
+locator = Blueprint('locator', __name__, )
 
 
-@locator.route("/locator")
+@locator.route("/locator", methods=["GET", "POST"])
 def index():
-    return render_template("locator/index.html")
+    """
+    Calculate distance information got from the api using geodesic package and show to the user
+    """
+    distance = None
+    destination_latitude = None
+    destination_longitude = None
 
+    if flask.request.method == "POST":
+        origin_latitude = request.form.get('lat_orig')
+        origin_longitude = request.form.get('lon_orig')
+        destination_latitude = request.form.get('lat_dest')
+        destination_longitude = request.form.get('lon_dest')
 
-@locator.route("/locator/result", methods=["POST"])
-def result():    
-    origin_latitude = request.form.get('lat_orig')
-    origin_longitude = request.form.get('lon_orig')
-    destination_latitude = request.form.get('lat_dest')
-    destination_longitude = request.form.get('lon_dest')
-    
-    coords_1 = (origin_latitude, origin_longitude)
-    coords_2 = (destination_latitude, destination_longitude)
-    print(coords_1)
-    print(coords_2)
-    distance = geodesic(coords_1, coords_2).km
+        coords_1 = (origin_latitude, origin_longitude)
+        coords_2 = (destination_latitude, destination_longitude)
+        distance = round(geodesic(coords_1, coords_2).km)
 
-    return render_template("locator/result.html", distance=distance)
+    return render_template("locator/index.html", distance=distance,
+                                                 destination_longitude=destination_longitude,
+                                                 destination_latitude=destination_latitude)
