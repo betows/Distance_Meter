@@ -4,7 +4,7 @@ import googlemaps
 
 
 # enter your api key here
-api_key = 'AIzaSyCXt-eENymUYzhr8TAqhnpwx1p5y9swyW0'
+api_key = 'your_api_key'
 
 # Take source as input
 source = input("Coordenadas origem:")
@@ -32,7 +32,7 @@ print(x)
 
 
 # Requires API key
-gmaps = googlemaps.Client(key='AIzaSyCXt-eENymUYzhr8TAqhnpwx1p5y9swyW0')
+gmaps = googlemaps.Client(key='your_api_key')
 
 # Requires cities name
 my_dist = gmaps.distance_matrix('Delhi', 'Mumbai')['rows'][0]['elements'][0]
