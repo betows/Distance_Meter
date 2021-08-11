@@ -1,4 +1,4 @@
-import os
+from flask_bootstrap import Bootstrap
 from flask import Flask
 from extensions import database, commands
 from config import DevelopmentConfig
@@ -7,8 +7,10 @@ from config import DevelopmentConfig
 from blueprints.main.views import main
 from blueprints.locator.views import locator
 
+
 def create_app():
     app = Flask(__name__)
+
     # setup with the configuration provided by the user / environment
     app.config.from_object(DevelopmentConfig)
     
@@ -19,6 +21,9 @@ def create_app():
     # register blueprint    
     app.register_blueprint(main)
     app.register_blueprint(locator)
+
+    # set up bootstrap
+    Bootstrap(app)
     
     return app
 

@@ -7,8 +7,8 @@
     </head>
     <body>
     <form method="post">
-
-        <div id="fields">
+        {% block navbar %}
+        <div id="fields" class="navbar navbar-fixed-top">
             Lat Origin:<input type="number" name="lat_orig" value="55.756272" readonly>
             Lon Origin:<input type="number" name="lon_orig" value="37.618746" readonly>
 
@@ -19,12 +19,12 @@
             Result: {{ distance }} Km
             {% endif %}
         </div>
+        {% endblock %}
         <div id="map"></div>
     </form>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgkgurLfDaHnRcCNcLbyxZ26EZ56__xGI&callback=initMap&libraries=&v=weekly" async></script>
     <script src="{{ url_for('static', filename='js/map.js') }}">
-        console.log("munhenho");
          placeMarker();
     </script>
     </body>
