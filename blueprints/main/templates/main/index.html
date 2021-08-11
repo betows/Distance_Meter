@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>{% block title %} Distance Meter {% endblock %}</title>
+    <title> Distance Meter </title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
 
@@ -14,21 +14,6 @@
 <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
 
 
     <!-- Custom styles for this template -->
@@ -37,37 +22,13 @@
   </head>
 
 <!-- Body -->
-
   <body>
 
-  <!-- Navbar -->
-
-  <header>
-    <nav class="navbar navbar-light bg-light">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#Toggler"
-              aria-controls="Toggler" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="Toggler">
-              <ul class="nav navbar-nav">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="contact.php">Contact</a></li>
-      </ul>
-      </div>
-  </div>
-</nav>
-  </header>
-
-
-<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <div class="col-lg-8 mx-auto p-3 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="blue" d="M 10,10 L 90,90V 10H 50" />
-          <span class="fs-4">Distance Meter</span></svg>
+          <h1 class="fs-4"> Distance Meter  </h1></svg>
     </a>
   </header>
 
@@ -79,11 +40,11 @@
             {% block body %} {% endblock %}
 
     </div>
-    <h1>Measure distance from a place to another</h1>
+    <h1>Measure distance from one place to another</h1>
     <p class="fs-5 col-md-8">Personal test project to measure distance in kilometers from a fix point in the Moscow Ring Road to a specified location.</p>
 
     <div class="mb-5">
-      <a href="{{ url_for('locator.index') }}" class="btn btn-primary btn-lg px-4">Measure distance</a>
+      <a href="{{ url_for('locator.index') }}" class="btn btn-primary btn-lg px-4"> Calculate </a>
     </div>
 
     <hr class="col-3 col-md-2 mb-5">
@@ -103,7 +64,7 @@
         <h2>Personal Resume Website</h2>
         <p>Review my skills and learn about me at my personal webpage.</p>
         <ul class="icon-list">
-          <li><a href="https://betows.github.io">Click me</a></li>
+          <li><a href="https://betows.github.io">Personal Webpage (English)</a></li>
 
         </ul>
       </div>

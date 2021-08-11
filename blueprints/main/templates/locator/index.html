@@ -3,28 +3,32 @@
         <title>Route time</title>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map.css') }}">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script ></script>
     </head>
     <body>
-    <form method="post">
-        {% block navbar %}
-        <div id="fields" class="navbar navbar-fixed-top">
-            Lat Origin:<input type="number" name="lat_orig" value="55.756272" readonly>
+    <nav class="navbar navbar-light bg-light py-0 ">
+    <form method="post" >
+        <div id="fields">
+            Lat Origin:<input type="number" name="lat_orig" value="55.756272" readonly >
             Lon Origin:<input type="number" name="lon_orig" value="37.618746" readonly>
-
             Lat Dest:<input type="number" name="lat_dest" id="lat_dest" value="{{ destination_latitude }}" readonly>
             Lon Dest:<input type="number" name="lon_dest" id="lon_dest" value="{{ destination_longitude }}" readonly>
-            <input type="submit">
+            <button class="btn btn-primary btn-sm" type="submit" >Calculate</button>
             {% if distance %}
-            Result: {{ distance }} Km
+            <strong> Result: {{ distance }} Km </strong>
             {% endif %}
-        </div>
-        {% endblock %}
-        <div id="map"></div>
-    </form>
 
+        </div>
+    </form>
+    </nav>
+    <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgkgurLfDaHnRcCNcLbyxZ26EZ56__xGI&callback=initMap&libraries=&v=weekly" async></script>
     <script src="{{ url_for('static', filename='js/map.js') }}">
+         initMap();
          placeMarker();
     </script>
     </body>
