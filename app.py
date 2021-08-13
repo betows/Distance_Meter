@@ -1,4 +1,4 @@
-from flask_bootstrap import Bootstrap
+#from flask_bootstrap import Bootstrap
 from flask import Flask
 from extensions import database, commands
 from config import DevelopmentConfig
@@ -23,8 +23,8 @@ def create_app():
     app.register_blueprint(locator)
 
     # set up bootstrap
-    Bootstrap(app)
-    
+    #Bootstrap(app)
+    #app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon.ico'))
     return app
 
 

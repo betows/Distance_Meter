@@ -1,30 +1,42 @@
 import flask
+from .models import DistanceResult
 from flask import Blueprint, render_template, request
-from geopy.distance import geodesic
-
 
 locator = Blueprint('locator', __name__, )
 
-
 @locator.route("/locator", methods=["GET", "POST"])
 def index():
+    """A distance locator endpoint.
+    ---
+    get:
+      description: Get a default page with the form to input
+      responses:
+        200:
+          content:
+            html
+    post:
+      description: Calcule distance beetween points and open a new form to input
+      responses:
+        200:
+          content:
+            html
     """
-    Calculate distance information from the api using geodesic package and show to the user
-    """
-    distance = None
-    destination_latitude = None
-    destination_longitude = None
+    distance_result = DistanceResult()
 
     if flask.request.method == "POST":
-        origin_latitude = request.form.get('lat_orig')
-        origin_longitude = request.form.get('lon_orig')
-        destination_latitude = request.form.get('lat_dest')
-        destination_longitude = request.form.get('lon_dest')
+        lat_orig = float(request.form.get('lat_orig'))
+        lng_orig = float(request.form.get('lon_orig'))
+        lat_dest = float(request.form.get('lat_dest'))
+        lng_dest = float(request.form.get('lon_dest'))
+        
+        distance_result = DistanceResult(lat_orig, lng_orig, lat_dest, lng_dest)  
+        distance_result.save_history()
 
-        coords_1 = (origin_latitude, origin_longitude)
-        coords_2 = (destination_latitude, destination_longitude)
-        distance = round(geodesic(coords_1, coords_2).km)
+    history = DistanceResult.load_history()
+    print(history)
+    return render_template("locator/index.html", distance_result=distance_result, history=history)
 
-    return render_template("locator/index.html", distance=distance,
-                           destination_longitude=destination_longitude,
-                           destination_latitude=destination_latitude)
+
+
+
+
