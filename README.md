@@ -10,8 +10,6 @@
 - [x] Use Googlemaps API
 - [x] Calculate distance between points
 - [x] Documentation 
-- [ ] Unit test
-- [ ] Dockerize application
 
 ## 💻 Requirements
 

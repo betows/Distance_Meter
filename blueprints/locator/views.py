@@ -15,7 +15,7 @@ def index():
           content:
             html
     post:
-      description: Calcule distance beetween points and open a new form to input
+      description: Calculate distance between points and open a new form to input
       responses:
         200:
           content:
